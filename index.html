@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Учёт посещаемости школы</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header>
+    <div><h1>Учёт посещаемости</h1><p>Школьный журнал</p></div>
+    <button id="printBtn" class="secondary">🖨 Печать журнала</button>
+  </header>
+
+  <main>
+    <section class="card setup">
+      <div class="row between"><h2>Классы</h2><button id="addClassBtn">+ Добавить класс</button></div>
+      <div id="classes" class="class-list"></div>
+    </section>
+
+    <section id="workspace" class="card hidden">
+      <div class="row between wrap">
+        <div><h2 id="classTitle">Класс</h2><div id="studentCount" class="muted"></div></div>
+        <div class="row"><label>Дата <input type="date" id="dateInput"></label><button id="addStudentBtn">+ Ученик</button></div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="attendance">Посещаемость</button>
+        <button class="tab" data-tab="stats">Статистика</button>
+      </div>
+
+      <div id="attendanceTab">
+        <div class="legend"><span>● Был</span><span>◐ Опоздал</span><span>○ Не был</span></div>
+        <div class="table-wrap"><table><thead><tr><th>№</th><th>Ученик</th><th>Статус</th><th>Причина отсутствия</th><th></th></tr></thead><tbody id="attendanceBody"></tbody></table></div>
+      </div>
+      <div id="statsTab" class="hidden"><div class="table-wrap"><table><thead><tr><th>Ученик</th><th>Уроков</th><th>Был</th><th>Опоздал</th><th>Не был</th><th>Посещаемость</th></tr></thead><tbody id="statsBody"></tbody></table></div></div>
+    </section>
+
+    <section class="card info"><h2>Важно</h2><p>Сайт специально сделан без входа и паролей. Поэтому любой человек, у которого есть ссылка, сможет менять данные. Для реальной школьной эксплуатации лучше позже добавить авторизацию учителей.</p></section>
+  </main>
+
+  <dialog id="classDialog"><form method="dialog"><h3>Новый класс</h3><input id="className" placeholder="Например, 7А" required><div class="dialog-actions"><button value="cancel" class="secondary">Отмена</button><button id="saveClassBtn" value="default">Создать</button></div></form></dialog>
+  <dialog id="studentDialog"><form method="dialog"><h3>Новый ученик</h3><input id="studentName" placeholder="Фамилия Имя" required><div class="dialog-actions"><button value="cancel" class="secondary">Отмена</button><button id="saveStudentBtn" value="default">Добавить</button></div></form></dialog>
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
