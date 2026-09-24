@@ -1,6 +1,6 @@
 // ВСТАВЬТЕ СЮДА ДВА ЗНАЧЕНИЯ ИЗ SUPABASE: URL и anon public key
-const SUPABASE_URL = sb_publishable_SuIQ5ub3SSUQ2RfMgq-Tlw_WwsE78Pe;
-const SUPABASE_ANON_KEY = sb_secret_h9D3VCmVtnRlFXmZWqzyQQ_zlHo2WAy;
+const SUPABASE_URL = 'sb_publishable_SuIQ5ub3SSUQ2RfMgq-Tlw_WwsE78Pe';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrYXptZnFzbm9vaGFqcGt5bG1lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyNjE2ODcsImV4cCI6MjEwNTgzNzY4N30.49Akjm84KAwAoFpKY1_KXQo2sDjGk20Jimjy3oNyCpQ';
 const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentClass = null;
